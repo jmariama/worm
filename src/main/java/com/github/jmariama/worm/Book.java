@@ -1,12 +1,24 @@
 package com.github.jmariama.worm;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.Getter;
+
 
 @Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Getter
     private String title;
+    @Getter
     private String author;
+
+
+
+    private String genre;
     private int status;
     private double rating;
     private String notes;
@@ -17,69 +29,44 @@ public Book() {
 
 }
 
-public Book(String title, String author) {
+public Book(Long id, String title, String author, String genre, String status ) {
+    this.id = id;
     this.title = title;
     this.author = author;
-}
+    this.genre = genre;
 
-    public Long getId() {
-        return id;
-    }
+}
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public int getStatus() {
-        return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
     }
 
-    public double getRating() {
-        return rating;
-    }
-
     public void setRating(double rating) {
         this.rating = rating;
     }
 
-    public String getNotes() {
-        return notes;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public void setNotes(String notes) {
         this.notes = notes;
     }
 
-    public String getDateStarted() {
-        return dateStarted;
-    }
-
     public void setDateStarted(String dateStarted) {
         this.dateStarted = dateStarted;
-    }
-
-    public String getDateFinished() {
-        return dateFinished;
     }
 
     public void setDateFinished(String dateFinished) {
