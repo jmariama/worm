@@ -1,0 +1,15 @@
+$kind: http-request
+name: Login
+order: 2000
+url: 'http://localhost:8080/library/auth/login'
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "testuser",
+      "password": "password123"
+    }
