@@ -1,5 +1,8 @@
 package com.github.jmariama.worm.services;
 
+import com.github.jmariama.worm.domain.auth.LoginRequest;
+import com.github.jmariama.worm.domain.auth.LoginResponse;
+import com.github.jmariama.worm.domain.auth.RegisterRequest;
 import com.github.jmariama.worm.domain.entities.UserEntity;
 import com.github.jmariama.worm.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +21,6 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Override
     public void registerUser(RegisterRequest registerRequest) {
-        BCryptPasswordEncoder passowrdEncoder = new BCryptPasswordEncoder(); //encrypts user passwords
-
-        //builds user entity
         UserEntity user = UserEntity.builder()
                 .name(registerRequest.getUsername())
                 .email(registerRequest.getEmail())
@@ -28,9 +28,12 @@ public class AuthenticationServiceImpl implements AuthenticationService{
                 .created_at(LocalDateTime.now())
                 .build();
 
-        //saves user entity into data repository.
         userRepository.save(user);
-
     }
 
+    @Override
+    public LoginResponse signInUser(LoginRequest loginRequest) {
+        // TODO: implement login
+        throw new UnsupportedOperationException("Login not implemented yet");
+    }
 }

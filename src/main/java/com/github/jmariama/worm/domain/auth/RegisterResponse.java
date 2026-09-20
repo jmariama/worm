@@ -1,0 +1,12 @@
+package com.github.jmariama.worm.domain.auth;
+
+import lombok.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class RegisterResponse {
+    private String username;
+    private String email;
+}

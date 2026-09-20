@@ -1,4 +1,4 @@
-package com.github.jmariama.worm.services;
+package com.github.jmariama.worm.domain.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
