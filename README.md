@@ -1,3 +1,3 @@
 # worm
-webapp that tracks books i've read
+retro library management system
 status: not complete.
