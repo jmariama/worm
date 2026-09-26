@@ -12,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+//controls fields public fields for api
 public class BookDTO {
 
     @Null
@@ -31,16 +32,16 @@ public class BookDTO {
 
     private String summary;
 
-    @NotNull(message = "Please provide a valid published year")
-    @Min(value = 0, message = "Published year has to be greater than 0")
-    @PastOrPresent
+    @NotNull(message = "Please provide a valid published year!")
+    @Min(value = 0, message = "Published year has to be greater than 0!")
+    @Max(value = 2026, message = "Published year cannot take place in the future!")
     private int published_year;
 
-    @NotNull(message = "Min copies cannot be null")
-    @Min(value = 0, message = "Min available copies cannot be less than zero")
-    private int total_copies;
+    @NotNull(message = "Minimum copies cannot be null!")
+    @Min(value = 0, message = "Minimum available copies cannot be less than zero!")
+    private Integer total_copies;
 
     @Null
-    private int available_copies;
+    private Integer available_copies;
 
 }

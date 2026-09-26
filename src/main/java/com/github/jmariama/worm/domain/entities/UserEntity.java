@@ -13,7 +13,7 @@ import java.util.UUID; //universally unique identifier
 @Entity //marks this as a class that will be used to create a record in the database
 @Table(name = "users") // defines a table in db
 
-//lombok taking care of generated setters and getters, aids in encapsulation.
+//lombok taking care of generated setters and getters, aids in encapsulation, and also constructors
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -25,6 +25,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.UUID) //auto generates primary keys.
     private UUID id;
 
+    //attributes for user, cannot be null must be unique.
     @Column(nullable = false, unique = true)
     private String name;
 
@@ -35,6 +36,7 @@ public class UserEntity {
     @Column(nullable = false) //null values not allowed
     private LocalDateTime created_at;
 
+    //checks for duplicates
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -42,6 +44,7 @@ public class UserEntity {
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(email, that.email) && Objects.equals(userPassword, that.userPassword) && Objects.equals(created_at, that.created_at);
     }
 
+    //checks for duplicates
     @Override
     public int hashCode() {
         return Objects.hash(id, name, email, userPassword, created_at);

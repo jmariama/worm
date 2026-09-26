@@ -13,18 +13,21 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
+    @Bean //to be managed by spring container
+    //for testing
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/library/auth/**")
+                .requestMatchers("/library/auth/**", "/library/books/**")
                     .permitAll().requestMatchers("/error").permitAll()
                 .anyRequest().authenticated()
             );
         return http.build();
     }
 
+
+    //encodes passwords.
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

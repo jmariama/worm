@@ -13,6 +13,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
+//standardize api errors.
 public class ApiErrorResponse {
     private int status;
     private String message;

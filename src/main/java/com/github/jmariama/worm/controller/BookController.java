@@ -21,24 +21,28 @@ public class BookController {
 
     private final BookService bookService;
 
+    //add book to database
     @PostMapping()
     public ResponseEntity<BookDTO> createBook(@RequestBody @Valid BookDTO book) {
         BookDTO savedBook = bookService.createBook(book);
         return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
     }
 
+    //retrieve books in database
     @GetMapping()
     public ResponseEntity<Page<BookDTO>> getAllBooks(){
         Page<BookDTO> allBooks = (Page<BookDTO>) bookService.getAllBooks();
         return new ResponseEntity<>(allBooks, HttpStatus.OK);
     }
 
+    //retrieve only books that are available in library
     @GetMapping("/available")
     public ResponseEntity<List<BookDTO>> getAllAvailableBooks(){
         List<BookDTO> availableBooks = bookService.getAllAvailableBooks();
         return new ResponseEntity<>(availableBooks, HttpStatus.OK);
     }
 
+    //retrieve books by id
     @GetMapping("/{id}")
     public ResponseEntity<BookDTO> getBookById(@PathVariable String id){
         Optional<BookDTO> retrievedBookOptional = bookService.getBookById(id);

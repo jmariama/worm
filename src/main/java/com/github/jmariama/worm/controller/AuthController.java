@@ -20,12 +20,14 @@ public class AuthController {
 
     private final AuthenticationService authService;
 
+    //login user
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest){
         LoginResponse loginResponse = authService.signInUser(loginRequest);
         return new ResponseEntity<>(loginResponse, HttpStatus.OK);
     }
 
+    //register a new user
     @PostMapping("/registerUser")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest){
         authService.registerUser(registerRequest);
